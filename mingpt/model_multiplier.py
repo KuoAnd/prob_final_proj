@@ -164,12 +164,14 @@ class GPT(nn.Module):
         # TODO:  you may choose different initialization
         if isinstance(module, nn.Linear):
             # torch.nn.init.xavier_uniform_(module.weight, gain=1.0)
-            torch.nn.init.normal_(module.weight, mean=0, std=0.2)
+            # torch.nn.init.normal_(module.weight, mean=0, std=0.2)
+            torch.nn.init.constant_(module.weight, 0.05)
             if module.bias is not None:
                 torch.nn.init.zeros_(module.bias)
         elif isinstance(module, nn.Embedding):
             # torch.nn.init.torch.nn.init.xavier_uniform_(module.weight, gain=1.0)
-            torch.nn.init.normal_(module.weight, mean=0, std=0.2)
+            # torch.nn.init.normal_(module.weight, mean=0, std=0.2)
+            torch.nn.init.constant_(module.weight, 0.05)
         elif isinstance(module, nn.LayerNorm):
             torch.nn.init.zeros_(module.bias)
             torch.nn.init.ones_(module.weight)
